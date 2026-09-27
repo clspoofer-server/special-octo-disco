@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classicoria • Оплата</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#0D0D12;color:#fff}
+.container{max-width:980px;margin:auto;padding:40px 20px}
+.header{display:flex;align-items:center;gap:16px;margin-bottom:35px}
+.logo{width:60px;height:60px;border-radius:16px;background:#18181F;border:1px solid #2D2D35;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold}
+.title h1{font-size:32px}
+.title p{color:#8B8B95;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:22px}
+.panel{background:#131319;border:1px solid #23232B;border-radius:18px;padding:22px}
+.label{display:block;margin-bottom:8px;color:#A0A0AA;font-size:14px}
+input,select{width:100%;background:#1A1A22;border:1px solid #2A2A33;border-radius:12px;padding:14px;color:#fff;font-size:15px;outline:none}
+.methods{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.method{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #2A2A33;border-radius:12px;cursor:pointer;background:#18181F}
+.method input{width:auto}
+.method.active{border-color:#C62828;background:#201516}
+.method span{font-weight:bold}
+.summary h2{margin-bottom:18px}
+.row{display:flex;justify-content:space-between;margin:12px 0;color:#D5D5DD}
+.price{font-size:42px;font-weight:bold;color:#FF4B4B;margin:18px 0}
+.pay{display:block;width:100%;text-align:center;text-decoration:none;background:#C62828;color:#fff;padding:15px;border-radius:12px;font-size:17px;font-weight:bold}
+.pay:hover{background:#E53935}
+.note{margin-top:15px;color:#8B8B95;font-size:12px;line-height:1.5}
+svg{display:block}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<div class="logo">C</div>
+<div class="title">
+<h1>CLASSICORIA</h1>
+<p>Официальная покупка привилегий</p>
+</div>
+</div>
+
+<div class="grid">
+
+<div class="panel">
+
+<label class="label">Никнейм Minecraft</label>
+<input type="text" placeholder="Введите ник">
+
+<br><br>
+
+<label class="label">Выберите привилегию</label>
+<select id="rank">
+<option value="vip">VIP — 69 ₽</option>
+<option value="premium">PREMIUM — 139 ₽</option>
+<option value="elite">ELITE — 239 ₽</option>
+<option value="legend">LEGEND — 339 ₽</option>
+<option value="titan">TITAN — 469 ₽</option>
+</select>
+
+<br><br>
+
+<label class="label">Способ оплаты</label>
+
+<div class="methods">
+
+<label class="method active">
+<input type="radio" name="pay" value="funpay" checked>
+<svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+<rect width="32" height="32" rx="8" fill="#34C759"/>
+<path d="M9 16h14M16 9v14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+<span>FunPay</span>
+</label>
+
+<label class="method">
+<input type="radio" name="pay" value="stars">
+<svg width="28" height="28" viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="16" fill="#2AABEE"/>
+<path d="M16 6l2.7 5.5L25 12.4l-4.5 4.3 1.1 6.3L16 20.2 10.4 23l1.1-6.3L7 12.4l6.3-.9z" fill="#fff"/>
+</svg>
+<span>Telegram Stars</span>
+</label>
+
+<label class="method">
+<input type="radio" name="pay" value="crypto">
+<svg width="28" height="28" viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="16" fill="#F7931A"/>
+<path d="M18.8 8.5h-5.2v15h5.7c2.5 0 4.2-1.3 4.2-3.5 0-1.7-1-2.7-2.4-3.1 1.1-.5 1.8-1.4 1.8-2.8 0-2.2-1.6-3.6-4.1-3.6zm-3.2 2.4h2.8c1 0 1.7.5 1.7 1.4s-.7 1.4-1.7 1.4h-2.8zm3.2 10.2h-3.2v-3.2h3.2c1.2 0 2 .6 2 1.6s-.8 1.6-2 1.6z" fill="#fff"/>
+</svg>
+<span>CryptoBot</span>
+</label>
+
+</div>
+
+</div>
+
+<div class="panel summary">
+
+<h2>Ваш заказ</h2>
+
+<div class="row">
+<div>Привилегия</div>
+<div id="rankName">VIP</div>
+</div>
+
+<div class="row">
+<div>Оплата</div>
+<div id="methodName">FunPay</div>
+</div>
+
+<div class="price" id="price">69 ₽</div>
+
+<a id="payButton" class="pay" href="#">Перейти к оплате</a>
+
+<div class="note">
+После нажатия откроется выбранная платёжная система. Ник указывается при оформлении заказа.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const links={
+funpay:{
+vip:"YOUR_LINK_FUNPAY_VIP",
+premium:"YOUR_LINK_FUNPAY_PREMIUM",
+elite:"YOUR_LINK_FUNPAY_ELITE",
+legend:"YOUR_LINK_FUNPAY_LEGEND",
+titan:"YOUR_LINK_FUNPAY_TITAN"
+},
+stars:{
+vip:"YOUR_LINK_STARS_VIP",
+premium:"YOUR_LINK_STARS_PREMIUM",
+elite:"YOUR_LINK_STARS_ELITE",
+legend:"YOUR_LINK_STARS_LEGEND",
+titan:"YOUR_LINK_STARS_TITAN"
+},
+crypto:{
+vip:"YOUR_LINK_CRYPTO_VIP",
+premium:"YOUR_LINK_CRYPTO_PREMIUM",
+elite:"YOUR_LINK_CRYPTO_ELITE",
+legend:"YOUR_LINK_CRYPTO_LEGEND",
+titan:"YOUR_LINK_CRYPTO_TITAN"
+}
+};
+
+const prices={
+vip:"69 ₽",
+premium:"139 ₽",
+elite:"239 ₽",
+legend:"339 ₽",
+titan:"469 ₽"
+};
+
+const names={
+vip:"VIP",
+premium:"PREMIUM",
+elite:"ELITE",
+legend:"LEGEND",
+titan:"TITAN"
+};
+
+const methods={
+funpay:"FunPay",
+stars:"Telegram Stars",
+crypto:"CryptoBot"
+};
+
+const rank=document.getElementById("rank");
+const radios=document.querySelectorAll("input[name=pay]");
+const price=document.getElementById("price");
+const rankName=document.getElementById("rankName");
+const methodName=document.getElementById("methodName");
+const button=document.getElementById("payButton");
+
+function update(){
+const pay=document.querySelector("input[name=pay]:checked").value;
+price.textContent=prices[rank.value];
+rankName.textContent=names[rank.value];
+methodName.textContent=methods[pay];
+button.href=links[pay][rank.value];
+document.querySelectorAll(".method").forEach(e=>e.classList.remove("active"));
+document.querySelector("input[name=pay]:checked").closest(".method").classList.add("active");
+}
+
+rank.onchange=update;
+radios.forEach(r=>r.onchange=update);
+update();
+</script>
+
+</body>
+</html>
