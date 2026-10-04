@@ -6,271 +6,304 @@
 <title>Classicoria Store</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background:#0d0d12;
-    color:#fff
+body {
+    background: #0d0d12;
+    color: #fff;
 }
 
-.container{
-    max-width:1180px;
-    margin:auto;
-    padding:32px
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px;
 }
 
-header{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    padding-bottom:28px;
-    border-bottom:1px solid #24242d
+header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #24242d;
 }
 
-.logo{
-    width:58px;
-    height:58px;
-    border-radius:14px;
-    background:#18181f;
-    border:1px solid #31313b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
-    font-weight:bold
+.logo {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: #18181f;
+    border: 1px solid #31313b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.sub{
-    font-size:13px;
-    color:#8d8d98
+.sub {
+    font-size: 13px;
+    color: #8d8d98;
 }
 
-.hero{
-    text-align:center;
-    padding:70px 0 55px
+.hero {
+    text-align: center;
+    padding: 70px 0 55px;
 }
 
-.hero h2{
-    font-size:54px;
-    margin-bottom:12px
+.hero h2 {
+    font-size: 54px;
+    margin-bottom: 12px;
 }
 
-.hero p{
-    color:#9ea0aa
+.hero p {
+    color: #9ea0aa;
 }
 
-/* Кнопка правил */
-.rules-button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    margin-top:28px;
-    padding:14px 24px;
-    background:#c62828;
-    color:#fff;
-    text-decoration:none;
-    border:1px solid #e53935;
-    border-radius:10px;
-    font-size:15px;
-    font-weight:bold;
-    transition:background .2s, border-color .2s, transform .2s
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
 }
 
-.rules-button:hover{
-    background:#e53935;
-    border-color:#ef5350;
-    transform:translateY(-1px)
+.rules-button,
+.moderator-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background .2s, border-color .2s, transform .2s;
 }
 
-.rules-button svg{
-    display:block
+.rules-button {
+    background: #c62828;
+    border: 1px solid #e53935;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:22px
+.rules-button:hover {
+    background: #e53935;
+    border-color: #ef5350;
+    transform: translateY(-1px);
 }
 
-.card{
-    background:#131319;
-    border:1px solid #25252f;
-    border-radius:18px;
-    padding:22px
+.moderator-button {
+    background: #25252f;
+    border: 1px solid #3a3a47;
 }
 
-.top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px
+.moderator-button:hover {
+    background: #33333f;
+    border-color: #555565;
+    transform: translateY(-1px);
 }
 
-.rank{
-    padding:6px 11px;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:bold
+.rules-button svg,
+.moderator-button svg {
+    display: block;
+    flex-shrink: 0;
 }
 
-.vip{
-    background:#3a2e10;
-    color:#ffd55b
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
 }
 
-.premium{
-    background:#2e2340;
-    color:#d8b4ff
+.card {
+    background: #131319;
+    border: 1px solid #25252f;
+    border-radius: 18px;
+    padding: 22px;
 }
 
-.elite{
-    background:#183243;
-    color:#8fdfff
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
 }
 
-.legend{
-    background:#473817;
-    color:#ffd37c
+.rank {
+    padding: 6px 11px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
-.titan{
-    background:#441616;
-    color:#ff9b9b
+.vip {
+    background: #3a2e10;
+    color: #ffd55b;
 }
 
-.icon{
-    width:42px;
-    height:42px;
-    border-radius:10px;
-    background:#1b1b22;
-    display:flex;
-    align-items:center;
-    justify-content:center
+.premium {
+    background: #2e2340;
+    color: #d8b4ff;
 }
 
-.price{
-    font-size:42px;
-    font-weight:bold;
-    margin-bottom:18px
+.elite {
+    background: #183243;
+    color: #8fdfff;
 }
 
-ul{
-    list-style:none;
-    margin-bottom:22px
+.legend {
+    background: #473817;
+    color: #ffd37c;
 }
 
-li{
-    padding:7px 0;
-    color:#d7d7de
+.titan {
+    background: #441616;
+    color: #ff9b9b;
 }
 
-.buy{
-    display:block;
-    text-decoration:none;
-    text-align:center;
-    background:#c62828;
-    color:#fff;
-    padding:13px;
-    border-radius:10px;
-    font-weight:bold
+.icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #1b1b22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.buy:hover{
-    background:#e53935
+.price {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 18px;
 }
 
-.compare{
-    margin:65px 0
+ul {
+    list-style: none;
+    margin-bottom: 22px;
 }
 
-.compare h3{
-    font-size:30px;
-    margin-bottom:18px
+li {
+    padding: 7px 0;
+    color: #d7d7de;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#131319;
-    border-radius:16px;
-    overflow:hidden
+.buy {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: #c62828;
+    color: #fff;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
-th{
-    background:#191922;
-    padding:15px
+.buy:hover {
+    background: #e53935;
 }
 
-td{
-    padding:14px;
-    border-top:1px solid #24242d;
-    text-align:center
+.compare {
+    margin: 65px 0;
 }
 
-td:first-child{
-    text-align:left
+.compare h3 {
+    font-size: 30px;
+    margin-bottom: 18px;
 }
 
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #131319;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
-.box{
-    background:#131319;
-    border:1px solid #24242d;
-    border-radius:16px;
-    padding:20px
+th {
+    background: #191922;
+    padding: 15px;
 }
 
-.box h4{
-    margin:12px 0 8px
+td {
+    padding: 14px;
+    border-top: 1px solid #24242d;
+    text-align: center;
 }
 
-.box p{
-    color:#9ea0aa;
-    font-size:14px;
-    line-height:1.5
+td:first-child {
+    text-align: left;
 }
 
-svg{
-    display:block
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+    margin-top: 65px;
 }
 
-@media(max-width:600px){
-    .container{
-        padding:20px
+.box {
+    background: #131319;
+    border: 1px solid #24242d;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.box h4 {
+    margin: 12px 0 8px;
+}
+
+.box p {
+    color: #9ea0aa;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+svg {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
     }
 
-    .hero{
-        padding:50px 0 40px
+    .hero {
+        padding: 50px 0 40px;
     }
 
-    .hero h2{
-        font-size:38px
+    .hero h2 {
+        font-size: 38px;
     }
 
-    .rules-button{
-        width:100%;
+    .action-buttons {
+        flex-direction: column;
     }
 
-    .price{
-        font-size:36px
+    .rules-button,
+    .moderator-button {
+        width: 100%;
     }
 
-    table{
-        font-size:13px
+    .price {
+        font-size: 36px;
     }
 
-    th,td{
-        padding:10px 7px
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 10px 7px;
     }
 }
 </style>
@@ -281,31 +314,48 @@ svg{
 <div class="container">
 
 <header>
-<div class="logo">C</div>
-<div>
-<h1>CLASSICORIA</h1>
-<div class="sub">Не Ванильное выживание • 1.9–1.12.2</div>
-</div>
+    <div class="logo">C</div>
+    <div>
+        <h1>CLASSICORIA</h1>
+        <div class="sub">Не Ванильное выживание • 1.9–1.12.2</div>
+    </div>
 </header>
 
 <section class="hero">
-<h2>Донат-магазин</h2>
-<p>Pay2Win. Не только дома, аукцион и красивые префиксы.</p>
+    <h2>Донат-магазин</h2>
+    <p>Pay2Win. Не только дома, аукцион и красивые префиксы.</p>
 
-<a
-    class="rules-button"
-    href="https://docs.google.com/document/d/1zDuZnKGWjQyQfBzMt6RqeIxbfLet4qBIA0CdVHnTjH0/edit?usp=sharing"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16v16H4z"/>
-        <path d="M8 8h8"/>
-        <path d="M8 12h8"/>
-        <path d="M8 16h5"/>
-    </svg>
-    ПРАВИЛА СЕРВЕРА
-</a>
+    <div class="action-buttons">
+
+        <a
+            class="rules-button"
+            href="https://docs.google.com/document/d/1zDuZnKGWjQyQfBzMt6RqeIxbfLet4qBIA0CdVHnTjH0/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16v16H4z"/>
+                <path d="M8 8h8"/>
+                <path d="M8 12h8"/>
+                <path d="M8 16h5"/>
+            </svg>
+            ПРАВИЛА СЕРВЕРА
+        </a>
+
+        <a
+            class="moderator-button"
+            href="https://t.me/classicoria"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 4L4 10.5L10 13L13 20L20 4Z"/>
+                <path d="M10 13L20 4"/>
+            </svg>
+            ПОДАТЬ ЗАЯВКУ НА МОДЕРАТОРА
+        </a>
+
+    </div>
 </section>
 
 <div class="cards">
@@ -336,7 +386,6 @@ svg{
 </a>
 </div>
 
-
 <div class="card">
 <div class="top">
 <div class="rank premium">PREMIUM</div>
@@ -361,7 +410,6 @@ svg{
 КУПИТЬ
 </a>
 </div>
-
 
 <div class="card">
 <div class="top">
@@ -391,7 +439,6 @@ svg{
 </a>
 </div>
 
-
 <div class="card">
 <div class="top">
 <div class="rank legend">LEGEND</div>
@@ -412,14 +459,12 @@ svg{
 <li>/ignore Игнорировать игрока</li>
 <li>Возможности привелегий ниже</li>
 <li>/kit legend Уникальный кит</li>
-
 </ul>
 
 <a class="buy" href="https://clspoofer-server.github.io/special-octo-disco/payment.html">
 КУПИТЬ
 </a>
 </div>
-
 
 <div class="card">
 <div class="top">
@@ -438,8 +483,7 @@ svg{
 <li>40 слотов AH</li>
 <li>Префикс TITAN</li>
 <li>/time Изменить время</li>
-<li>/weather Изменить погоду </li>
-
+<li>/weather Изменить погоду</li>
 <li>Возможности привелегий ниже</li>
 <li>/kit titan Уникальный кит</li>
 </ul>
@@ -450,6 +494,10 @@ svg{
 </div>
 
 </div>
+
+<div class="features">
+
+<div class="box">
 
 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8FDFFF" stroke-width="2">
 <path d="M12 2L20 5V11C20 16 16 20 12 22C8 20 4 16 4 11V5Z"/>
@@ -462,7 +510,6 @@ Pay2Win преимуществ и продажи силы.
 </p>
 
 </div>
-
 
 <div class="box">
 
@@ -478,7 +525,6 @@ Pay2Win преимуществ и продажи силы.
 </p>
 
 </div>
-
 
 <div class="box">
 
